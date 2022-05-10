@@ -25,7 +25,7 @@ const colorBoxStyles = (color, height, width) => css`
   justify-content: center;
   transition: 1s;
   animation-name: screensaverHor, screensaverVer;
-  animation-duration: 4s;
+  animation-duration: 5s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
@@ -40,7 +40,7 @@ const colorBoxStyles = (color, height, width) => css`
   }
   @keyframes screensaverVer {
     0% {
-      margin-top: 0%;
+      margin-top: -30%;
     }
     100% {
       margin-top: 17%;
