@@ -8,6 +8,7 @@ import { useState } from 'react';
 const headerStyles = css`
   font-weight: bold;
   font-size: 40px;
+  padding: 100px;
 `;
 
 const colorBoxStyles = (color, height, width) => css`
@@ -19,13 +20,39 @@ const colorBoxStyles = (color, height, width) => css`
   font-weight: bold;
   font-size: 25px;
   display: flex;
+  position: absolute;
   align-items: center;
   justify-content: center;
   transition: 1s;
+  animation-name: screensaverHor, screensaverVer;
+  animation-duration: 4s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  @keyframes screensaverHor {
+    0% {
+      margin-left: 0%;
+    }
+
+    100% {
+      margin-left: 50%;
+    }
+  }
+  @keyframes screensaverVer {
+    0% {
+      margin-top: 0%;
+    }
+    100% {
+      margin-top: 17%;
+    }
+  }
 `;
+
 const buttonStyles = css`
   display: flex;
   margin: 0 auto;
+  border-radius: 8px;
+  font-size: 15px;
 `;
 const labelDivStyles = css`
   display: grid;
@@ -39,14 +66,18 @@ const separateInputStyles = css`
   justify-content: space-evenly;
 `;
 
+const labelInputStyles = css`
+  border-radius: 5px;
+`;
+
 function App() {
   const [hue, setHue] = useState('');
   const [luminosity, setLuminosity] = useState('');
   const [color, setColor] = useState(
     randomColor({ hue: hue, luminosity: luminosity }),
   );
-  const [height, setHeight] = useState('300px');
-  const [width, setWidth] = useState('300px');
+  const [height, setHeight] = useState('300');
+  const [width, setWidth] = useState('300');
   return (
     <div className="App">
       <div css={headerStyles}>React Random Color Generator!</div>
@@ -72,6 +103,7 @@ function App() {
             <label css={labelDivStyles}>
               Choose a hue:
               <input
+                css={labelInputStyles}
                 onChange={(event) => {
                   setColor(
                     randomColor({
@@ -88,6 +120,7 @@ function App() {
             <label css={labelDivStyles}>
               Choose a luminosity:
               <input
+                css={labelInputStyles}
                 onChange={(event) => {
                   setColor(
                     randomColor({
@@ -108,6 +141,7 @@ function App() {
             <label css={labelDivStyles}>
               Height of color box (in pixels):
               <input
+                css={labelInputStyles}
                 onChange={(event) => setHeight(event.currentTarget.value)}
               />
             </label>
@@ -116,6 +150,7 @@ function App() {
             <label css={labelDivStyles}>
               Width of color box (in pixels):
               <input
+                css={labelInputStyles}
                 onChange={(event) => setWidth(event.currentTarget.value)}
               />
             </label>
